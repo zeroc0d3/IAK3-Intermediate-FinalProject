@@ -36,7 +36,7 @@ Linux 4.4.0-112-generic
 * [Postman Collection Test Case v2](https://raw.githubusercontent.com/zeroc0d3/IAK3-Intermediate-FinalProject/master/postman/TMDB-IAK3_v2.json)
 * [Postman Collection Test Case v2.1](https://raw.githubusercontent.com/zeroc0d3/IAK3-Intermediate-FinalProject/master/postman/TMDB-IAK3_v2.1.json)
 
-![Automation API](https://github.com/zeroc0d3/IAK3-Intermediate-FinalProject/postman/postman_runner.png)
+![Automation API](https://github.com/zeroc0d3/IAK3-Intermediate-FinalProject/blob/master/postman/postman_runner.png)
  
 ### Properties
 * Student: **Dwi Fahni Denni**
