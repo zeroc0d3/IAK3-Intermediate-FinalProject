@@ -21,15 +21,22 @@ Linux 4.4.0-112-generic
   - **io.realm:realm-gradle-plugin:4.3.1**
 
 ### Libraries
- * [BottomSheet](https://github.com/michaelbel/BottomSheet)
- * [Gson](https://github.com/google/gson)
- * [Retrofit](https://github.com/square/retrofit)
- * [Picasso](https://github.com/square/picasso)
- * [RxJava](https://github.com/ReactiveX/RxJava)
- * [Moxy](https://github.com/Arello-Mobile/Moxy)
- * [GestureViews](https://github.com/alexvasilkov/GestureViews)
- * [ExpandableTextView](https://github.com/Blogcat/Android-ExpandableTextView)
- * [ChipsLayoutManager](https://github.com/BelooS/ChipsLayoutManager)
+* [BottomSheet](https://github.com/michaelbel/BottomSheet)
+* [Gson](https://github.com/google/gson)
+* [Retrofit](https://github.com/square/retrofit)
+* [Picasso](https://github.com/square/picasso)
+* [RxJava](https://github.com/ReactiveX/RxJava)
+* [Moxy](https://github.com/Arello-Mobile/Moxy)
+* [GestureViews](https://github.com/alexvasilkov/GestureViews)
+* [ExpandableTextView](https://github.com/Blogcat/Android-ExpandableTextView)
+* [ChipsLayoutManager](https://github.com/BelooS/ChipsLayoutManager)
+
+### Automation API Test (Runner)
+* [Postman Environment](https://raw.githubusercontent.com/zeroc0d3/IAK3-Intermediate-FinalProject/master/postman/TMDB-IAK3_environment.json)
+* [Postman Collection Test Case v2](https://raw.githubusercontent.com/zeroc0d3/IAK3-Intermediate-FinalProject/master/postman/TMDB-IAK3_v2.json)
+* [Postman Collection Test Case v2.1](https://raw.githubusercontent.com/zeroc0d3/IAK3-Intermediate-FinalProject/master/postman/TMDB-IAK3_v2.1.json)
+
+![Automation API](https://github.com/zeroc0d3/IAK3-Intermediate-FinalProject/postman/postman_runner.png)
  
 ### Properties
 * Student: **Dwi Fahni Denni**
@@ -38,4 +45,4 @@ Linux 4.4.0-112-generic
 * Year: **2018**
 
 ### Notes:
-* [Wiki Android Versions](https://en.wikipedia.org/wiki/Android_version_history)                                                                                                                                                               
+* [Wiki Android Versions](https://en.wikipedia.org/wiki Android_version_history)
