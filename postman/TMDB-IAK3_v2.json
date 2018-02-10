@@ -1,0 +1,724 @@
+{
+	"info": {
+		"name": "TMDB - IAK3",
+		"_postman_id": "7841225e-18cb-9148-b8ac-cd1c3fb3102e",
+		"description": "The Movie Database (TMDB)\nFinal Project IAK3 (Indonesia Android Kejar)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "000 Fetch Library",
+			"description": "",
+			"item": [
+				{
+					"name": "0001 Fetch PostmanBDD",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "73348a0b-f22b-438e-aebb-f0cf7a621cac",
+								"type": "text/javascript",
+								"exec": [
+									"/* =============== DESCRIPTION FILE ======================================== */",
+									"/*                                                                           */",
+									"/*   Module  : ZEROC0D3 JSON TEST API - MyCampus.app                         */",
+									"/*   Type    : POSTMAN JSON                                                  */",
+									"/*   Author  : ZEROC0D3 Team                                                 */",
+									"/*   Date    : November 2016                                                 */",
+									"/*                                                                           */",
+									"/*  __________                  _________ _______       .___________         */",
+									"/*  \\____    /___________  ____ \\_   ___ \\\\   _  \\    __| _/\\_____  \\ Team   */",
+									"/*    /     // __ \\_  __ \\/  _ \\/    \\  \\//  /_\\  \\  / __ |   _(__  <        */   ",
+									"/*   /     /\\  ___/|  | \\(  <_> )     \\___\\  \\_/   \\/ /_/ |  /       \\       */",
+									"/*  /_______ \\___  >__|   \\____/ \\______  /\\_____  /\\____ | /______  /       */",
+									"/*          \\/   \\/                     \\/       \\/      \\/        \\/        */",
+									"/*                                                                           */",
+									"/*  ZeroC0d3 Team                                                            */  ",
+									"/*  [ N0th1ng Imp0ss1bl3, Grey Hat Coder ]                                   */",
+									"/*  --------------------------------------------------------                 */",
+									"/*  http://pastebin.com/u/zeroc0d3                                           */",
+									"/*  https://github.com/zeroc0d3                                              */",
+									"/*                                                                           */",
+									"/* ========================================================================= */",
+									"",
+									"// ------------------------------------------- //",
+									"//  TESTCASE PostmanBDD                        //",
+									"// ------------------------------------------- //",
+									"//  Get external library from URL & save to    //",
+									"//  global environment as \"module:postmanBDD\"  //",
+									"// ------------------------------------------- //",
+									"postman.setGlobalVariable(\"module:postmanBDD\", responseBody);",
+									"try {",
+									"    eval(responseBody);",
+									"}",
+									"catch (e) { }",
+									"tests['PostmanBDD library ready'] = (typeof describe === 'function');",
+									"",
+									"",
+									"// ------------------------------------------- //",
+									"//  TESTCASE Set URL RestAPI                   //",
+									"// ------------------------------------------- //",
+									"var url_restapi = \"https://api.themoviedb.org/3/\";",
+									"postman.setGlobalVariable(\"url_restapi\", url_restapi);",
+									"tests[\"Set URL Rest API to => \" +url_restapi] = responseCode.code === 200;"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": "http://bigstickcarpet.com/postman-bdd/dist/postman-bdd.min.js",
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "001 Authentification",
+			"description": "",
+			"item": [
+				{
+					"name": "0010 Test API Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9b8bb7d4-01bf-4631-9ea7-3b7c5102b7e9",
+								"type": "text/javascript",
+								"exec": [
+									"// ----------------------------------------- //",
+									"//  TESTCASE PostmanBDD                      //",
+									"// ----------------------------------------- //",
+									"//  Load external library from Environment   //",
+									"// ----------------------------------------- //",
+									"eval(postman.getGlobalVariable('module:postmanBDD'));",
+									"",
+									"var jsonData            = JSON.parse(responseBody); //tv4",
+									"var response_data_error = response.body.error;",
+									"var title_data          = \"Test API Request\";",
+									"",
+									"if (!response_data_error) {",
+									"  describe('Get '+title_data+' info => ', function() {",
+									"    var jsonData       = response.body.images;",
+									"    var base_url       = jsonData.base_url;",
+									"    var secure_url     = jsonData.secure_base_url;",
+									"      ",
+									"    it('should return '+title_data+' data', function() {",
+									"       response.should.have.status(200);",
+									"       response.should.be.json;",
+									"       response.body.should.not.be.empty;",
+									"    });",
+									"        ",
+									"    it('should have a mandatory data (base_url: '+base_url+', secure_url: '+secure_url+')' , function() {",
+									"       jsonData.should.be.an('object');",
+									"       //jsonData.should.have.property('base_url').and.should.not.be.empty;",
+									"       //jsonData.should.have.property('secure_url').and.should.not.be.empty;",
+									"    });",
+									"    ",
+									"  });  ",
+									"}",
+									"",
+									"//tv4",
+									"tests[\"Succesfully show API Request\"] = !response_data_error;"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://api.themoviedb.org/3/configuration?api_key={{tmdb_api_key}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"configuration"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{tmdb_api_key}}",
+									"equals": true
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "0011 Create Request Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"// ----------------------------------------- //",
+									"//  TESTCASE PostmanBDD                      //",
+									"// ----------------------------------------- //",
+									"//  Load external library from Environment   //",
+									"// ----------------------------------------- //",
+									"eval(postman.getGlobalVariable('module:postmanBDD'));",
+									"",
+									"var jsonData            = JSON.parse(responseBody); //tv4",
+									"var response_data_error = response.body.error;",
+									"var title_data          = \"Create Request Token\";",
+									"",
+									"if (!response_data_error) {",
+									"  describe('Get '+title_data+' info => ', function() {",
+									"    var jsonData       = response.body;",
+									"    var token          = jsonData.request_token;",
+									"      ",
+									"    it('should return '+title_data+' data', function() {",
+									"       response.should.have.status(200);",
+									"       response.should.be.json;",
+									"       response.body.should.not.be.empty;",
+									"    });",
+									"        ",
+									"    it('should have request_token (request_token: '+token+')' , function() {",
+									"       jsonData.should.be.an('object');",
+									"       jsonData.should.have.property('request_token').and.not.empty;",
+									"    });",
+									"    ",
+									"    // ----------------------------------------- //",
+									"    //  Set Global Variable Token                //",
+									"    // ----------------------------------------- //",
+									"    postman.setGlobalVariable(\"tmdb_token\", token);",
+									"  });  ",
+									"",
+									"}",
+									"",
+									"//tv4",
+									"tests[\"Request Token succesfully generate\"] = !response_data_error;"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://api.themoviedb.org/3/authentication/token/new?api_key={{tmdb_api_key}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"authentication",
+								"token",
+								"new"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{tmdb_api_key}}",
+									"equals": true
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "0012 Create Session",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://api.themoviedb.org/3/authentication/session/new?api_key={{tmdb_api_key}}&request_token={{tmdb_token}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"authentication",
+								"session",
+								"new"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{tmdb_api_key}}",
+									"equals": true
+								},
+								{
+									"key": "request_token",
+									"value": "{{tmdb_token}}",
+									"equals": true
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "0013 Create Session With Login",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://api.themoviedb.org/3/authentication/token/validate_with_login?api_key={{tmdb_api_key}}&usename={{tmdb_username}}&password={{tmdb_password}}&request_token={{tmdb_token}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"authentication",
+								"token",
+								"validate_with_login"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{tmdb_api_key}}",
+									"equals": true
+								},
+								{
+									"key": "usename",
+									"value": "{{tmdb_username}}",
+									"equals": true
+								},
+								{
+									"key": "password",
+									"value": "{{tmdb_password}}",
+									"equals": true
+								},
+								{
+									"key": "request_token",
+									"value": "{{tmdb_token}}",
+									"equals": true
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "002 Collection",
+			"description": "",
+			"item": [
+				{
+					"name": "0020 Get Collections",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"// ----------------------------------------- //",
+									"//  TESTCASE PostmanBDD                      //",
+									"// ----------------------------------------- //",
+									"//  Load external library from Environment   //",
+									"// ----------------------------------------- //",
+									"eval(postman.getGlobalVariable('module:postmanBDD'));",
+									"",
+									"var jsonData            = JSON.parse(responseBody); //tv4",
+									"var response_data_error = response.body.error;",
+									"var title_data          = \"Collection\";",
+									"",
+									"if (!response_data_error) {",
+									"  describe('Get '+title_data+' info => ', function() {",
+									"    var jsonData       = response.body;",
+									"    var id             = jsonData.id;",
+									"    var imdb_id        = jsonData.imdb_id;",
+									"    var homepage       = jsonData.homepage;",
+									"      ",
+									"    it('should return '+title_data+' data', function() {",
+									"       response.should.have.status(200);",
+									"       response.should.be.json;",
+									"       response.body.should.not.be.empty;",
+									"    });",
+									"        ",
+									"    id_string = String(id);",
+									"    it('should have a mandatory data (id: '+id_string+', imdb_id: '+imdb_id+', homepage: '+homepage+')' , function() {",
+									"       jsonData.should.be.an('object');",
+									"       jsonData.should.have.property('id').and.string;",
+									"       jsonData.should.have.property('imdb_id').and.not.empty;",
+									"       jsonData.should.have.property('homepage').and.not.empty;",
+									"    });",
+									"    ",
+									"  });  ",
+									"}",
+									"",
+									"//tv4",
+									"tests[\"Succesfully show Collection\"] = !response_data_error;"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://api.themoviedb.org/3/movie/550?api_key={{tmdb_api_key}}&language={{language}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"movie",
+								"550"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{tmdb_api_key}}",
+									"equals": true
+								},
+								{
+									"key": "language",
+									"value": "{{language}}",
+									"equals": true
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "0021 Get Collections (default language)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"// ----------------------------------------- //",
+									"//  TESTCASE PostmanBDD                      //",
+									"// ----------------------------------------- //",
+									"//  Load external library from Environment   //",
+									"// ----------------------------------------- //",
+									"eval(postman.getGlobalVariable('module:postmanBDD'));",
+									"",
+									"var jsonData            = JSON.parse(responseBody); //tv4",
+									"var response_data_error = response.body.error;",
+									"var title_data          = \"Test API Request\";",
+									"",
+									"if (!response_data_error) {",
+									"  describe('Get '+title_data+' info => ', function() {",
+									"    var jsonData       = response.body;",
+									"    var id             = jsonData.id;",
+									"    var imdb_id        = jsonData.imdb_id;",
+									"    var homepage       = jsonData.homepage;",
+									"      ",
+									"    it('should return '+title_data+' data', function() {",
+									"       response.should.have.status(200);",
+									"       response.should.be.json;",
+									"       response.body.should.not.be.empty;",
+									"    });",
+									"        ",
+									"    id_string = String(id);",
+									"    it('should have a mandatory data (id: '+id_string+', imdb_id: '+imdb_id+', homepage: '+homepage+')' , function() {",
+									"       jsonData.should.be.an('object');",
+									"       jsonData.should.have.property('id').and.string;",
+									"       jsonData.should.have.property('imdb_id').and.not.empty;",
+									"       jsonData.should.have.property('homepage').and.not.empty;",
+									"    });",
+									"    ",
+									"  });  ",
+									"}",
+									"",
+									"//tv4",
+									"tests[\"Succesfully show API Request\"] = !response_data_error;"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://api.themoviedb.org/3/movie/550?api_key={{tmdb_api_key}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"movie",
+								"550"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{tmdb_api_key}}",
+									"equals": true
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "003 Movies",
+			"description": "",
+			"item": [
+				{
+					"name": "0030 Get Movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6f416517-16b8-433e-9f55-3751a90a1f6e",
+								"type": "text/javascript",
+								"exec": [
+									"// ----------------------------------------- //",
+									"//  TESTCASE PostmanBDD                      //",
+									"// ----------------------------------------- //",
+									"//  Load external library from Environment   //",
+									"// ----------------------------------------- //",
+									"eval(postman.getGlobalVariable('module:postmanBDD'));",
+									"",
+									"var jsonData            = JSON.parse(responseBody); //tv4",
+									"var response_data_error = response.body.error;",
+									"var title_data          = \"Videos\";",
+									"",
+									"if (!response_data_error) {",
+									"  describe('Get '+title_data+' info => ', function() {",
+									"    var jsonData       = response.body;",
+									"    var id             = jsonData.id;",
+									"    ",
+									"    var jsonData_array = jsonData.results[0];",
+									"    var id_video       = jsonData_array.id;",
+									"    var key_video      = jsonData_array.key;",
+									"    var name_video     = jsonData_array.name;",
+									"    ",
+									"    it('should return '+title_data+' data', function() {",
+									"       response.should.have.status(200);",
+									"       response.should.be.json;",
+									"       response.body.should.not.be.empty;",
+									"    });",
+									"        ",
+									"    id_string = String(id);",
+									"    it('should have a mandatory data (id: '+id_string+')' , function() {",
+									"       jsonData.should.be.an('object');",
+									"       jsonData.should.have.property('id').and.string;",
+									"    });",
+									"    ",
+									"    id_video_string = String(id_video);",
+									"    it('should have a secondary data (id: '+id_video_string+', key: '+key_video+', name: '+name_video+')' , function() {",
+									"       jsonData_array.should.be.an('object');",
+									"       jsonData_array.should.have.property('key').and.not.empty;",
+									"       jsonData_array.should.have.property('name').and.not.empty;",
+									"    });",
+									"    ",
+									"  });  ",
+									"}",
+									"",
+									"//tv4",
+									"tests[\"Succesfully show Movies\"] = !response_data_error;"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://api.themoviedb.org/3/movie/{{movie_id}}/videos?api_key={{tmdb_api_key}}&language={{language}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"movie",
+								"{{movie_id}}",
+								"videos"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{tmdb_api_key}}",
+									"equals": true
+								},
+								{
+									"key": "language",
+									"value": "{{language}}",
+									"equals": true
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "004 List (v4)",
+			"description": "",
+			"item": [
+				{
+					"name": "0041 List Movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "08ce63f0-7b9e-4e70-b314-e7a0f628a8c8",
+								"type": "text/javascript",
+								"exec": [
+									"// ----------------------------------------- //",
+									"//  TESTCASE PostmanBDD                      //",
+									"// ----------------------------------------- //",
+									"//  Load external library from Environment   //",
+									"// ----------------------------------------- //",
+									"eval(postman.getGlobalVariable('module:postmanBDD'));",
+									"",
+									"var jsonData            = JSON.parse(responseBody); //tv4",
+									"var response_data_error = response.body.error;",
+									"var title_data          = \"List of Movies\";",
+									"",
+									"if (!response_data_error) {",
+									"  describe('Get '+title_data+' info => ', function() {",
+									"    var jsonData       = response.body;",
+									"    var id             = jsonData.id;",
+									"    var total_results  = jsonData.total_results;",
+									"    ",
+									"    it('should return '+title_data+' data', function() {",
+									"       response.should.have.status(200);",
+									"       response.should.be.json;",
+									"       response.body.should.not.be.empty;",
+									"    });",
+									"        ",
+									"    id_string = String(id);",
+									"    total_list = String(total_results);",
+									"    it('should have a mandatory data (id: '+id_string+', total_results: '+total_list+')' , function() {",
+									"       jsonData.should.be.an('object');",
+									"       jsonData.should.have.property('id').and.string;",
+									"       jsonData.should.have.property('total_results').and.string;",
+									"    });",
+									"    ",
+									"  });  ",
+									"}",
+									"",
+									"//tv4",
+									"tests[\"Succesfully show List of Movies\"] = !response_data_error;"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://api.themoviedb.org/4/list/1?page=1&api_key={{tmdb_api_key}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"4",
+								"list",
+								"1"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"equals": true
+								},
+								{
+									"key": "api_key",
+									"value": "{{tmdb_api_key}}",
+									"equals": true
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
