@@ -20,7 +20,7 @@ Linux 4.4.0-112-generic
   - **com.google.gms:google-services:3.0.0**
   - **io.realm:realm-gradle-plugin:4.3.1**
 * Multidex:
-  - com.android.support:multidex:1.0.1
+  - **com.android.support:multidex:1.0.1**
 
 ### Libraries
 * [BottomSheet](https://github.com/michaelbel/BottomSheet)
