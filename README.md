@@ -19,6 +19,8 @@ Linux 4.4.0-112-generic
   - **com.android.tools.build:gradle:3.0.1**
   - **com.google.gms:google-services:3.0.0**
   - **io.realm:realm-gradle-plugin:4.3.1**
+* Multidex:
+  - com.android.support:multidex:1.0.1
 
 ### Libraries
 * [BottomSheet](https://github.com/michaelbel/BottomSheet)
@@ -30,6 +32,7 @@ Linux 4.4.0-112-generic
 * [GestureViews](https://github.com/alexvasilkov/GestureViews)
 * [ExpandableTextView](https://github.com/Blogcat/Android-ExpandableTextView)
 * [ChipsLayoutManager](https://github.com/BelooS/ChipsLayoutManager)
+* [Firebase](https://firebase.google.com)
 
 ### Automation API Test (Runner)
 * [Postman Environment](https://raw.githubusercontent.com/zeroc0d3/IAK3-Intermediate-FinalProject/master/postman/TMDB-IAK3_environment.json)
