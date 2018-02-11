@@ -1,6 +1,6 @@
 {
 	"info": {
-		"name": "TMDB - IAK3",
+		"name": "TMDB-IAK3",
 		"_postman_id": "7841225e-18cb-9148-b8ac-cd1c3fb3102e",
 		"description": "The Movie Database (TMDB)\nFinal Project IAK3 (Indonesia Android Kejar)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
@@ -21,10 +21,10 @@
 								"exec": [
 									"/* =============== DESCRIPTION FILE ======================================== */",
 									"/*                                                                           */",
-									"/*   Module  : ZEROC0D3 JSON TEST API - MyCampus.app                         */",
+									"/*   Module  : ZEROC0D3 JSON TEST API - The Movie Database (TMDB)            */",
 									"/*   Type    : POSTMAN JSON                                                  */",
 									"/*   Author  : ZEROC0D3 Team                                                 */",
-									"/*   Date    : November 2016                                                 */",
+									"/*   Date    : February 2018                                                 */",
 									"/*                                                                           */",
 									"/*  __________                  _________ _______       .___________         */",
 									"/*  \\____    /___________  ____ \\_   ___ \\\\   _  \\    __| _/\\_____  \\ Team   */",
