@@ -1,0 +1,167 @@
+apply from: '../dependencies.gradle'
+apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
+
+android {
+    compileSdkVersion androidCompileSdk
+    buildToolsVersion androidBuildTools
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            outputFileName = "MovieDB-v${variant.versionName}-${variant.name}.apk"
+        }
+    }
+
+    defaultConfig {
+        applicationId    appPackage
+        minSdkVersion    appMinSdkVersion
+        targetSdkVersion appTargetSdkVersion
+        versionCode      appVersionCode
+        versionName      appVersionName
+        buildConfigField "String", "VERSION_DATE", '"Feb 11, 2018"'
+        project.ext.set("archivesBaseName", "MovieDB-v" + defaultConfig.versionName)
+        multiDexEnabled  true
+        vectorDrawables.useSupportLibrary true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            jniDebuggable true
+            minifyEnabled false
+            //applicationIdSuffix ".debug"
+            //versionNameSuffix "-debug"
+            resValue "string", "app_name", "MovieDB (beta)"
+        }
+
+        release {
+            debuggable false
+            jniDebuggable false
+            minifyEnabled true
+            shrinkResources true
+            resValue "string", "app_name", "MovieDB"
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles fileTree('proguard').asList().toArray()
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds true
+        disable 'MissingTranslation', 'GoogleAppIndexingWarning'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    realm {
+        syncEnabled true
+    }
+
+    dataBinding {
+        enabled true
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
+    testOptions {
+        // Encapsulates options for unit tests.
+        unitTests {
+            // Encapsulates options for controlling how Gradle executes unit tests.
+            all {
+                // Always show the result of every unit test, even if it passes.
+                testLogging {
+                    events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+                }
+            }
+        }
+    }
+
+    packagingOptions {
+        exclude '.readme'
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/LGPL2.1'
+        exclude 'META-INF/MIT'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/README.txt'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+        exclude 'META-INF/MANIFEST.MF'
+        exclude 'META-INF/rxjava.properties'
+        exclude 'README.md'
+    }
+}
+
+dependencies {
+    implementation androidSdkDependencies.appCompat
+    implementation androidSdkDependencies.design
+    implementation androidSdkDependencies.cardView
+    implementation androidSdkDependencies.customtabs
+    implementation androidSdkDependencies.recyclerView
+    implementation androidSdkDependencies.multiDex
+    implementation androidSdkDependencies.supportCompat
+    implementation androidSdkDependencies.supportV4
+    implementation androidSdkDependencies.supportV13
+    implementation androidSdkDependencies.supportAnnotations
+    implementation androidSdkDependencies.supportVector
+    implementation androidSdkDependencies.supportPercent
+    implementation androidSdkDependencies.supportPalette
+    implementation androidSdkDependencies.constraintLayout
+
+    implementation googleDependencies.gmsAds
+    implementation googleDependencies.gmsAnalytics
+    implementation googleDependencies.gmsAuth
+    implementation googleDependencies.firebaseCore
+    implementation googleDependencies.firebaseAds
+    implementation googleDependencies.firebaseAuth
+    implementation googleDependencies.firebaseCrash
+    implementation googleDependencies.firebaseDB
+    implementation googleDependencies.firebaseMessaging
+    implementation googleDependencies.firebaseStorage
+    implementation googleDependencies.daggerAndroid
+    implementation googleDependencies.daggerSupport
+    annotationProcessor googleDependencies.daggerCompiler
+    annotationProcessor googleDependencies.daggerProcessor
+
+    implementation arelloMobileDependencies.moxy
+    implementation arelloMobileDependencies.moxyAndroid
+    implementation arelloMobileDependencies.moxyCompat
+    annotationProcessor arelloMobileDependencies.moxyCompiler
+
+    implementation alexvasilkovDependencies.events
+    implementation alexvasilkovDependencies.gestureViews
+    implementation alexvasilkovDependencies.androidCommons
+
+    implementation rxDependencies.rxAndroid
+    implementation rxDependencies.rxJava
+
+    implementation squareupDependencies.rxAdapterJava
+    implementation squareupDependencies.gsonRetrofit
+    implementation squareupDependencies.retrofit
+    implementation squareupDependencies.picasso
+
+    implementation bottomSheet
+    implementation androidAdapters
+    implementation expandableTextView
+    implementation chipsLayoutManager
+
+    testImplementation testingDependencies.junit
+    testImplementation testingDependencies.mockito
+
+    androidTestImplementation testingSupportDependencies.supportTest
+    androidTestImplementation testingSupportDependencies.supportTestEspresso
+}
+
+apply plugin: 'com.google.gms.google-services'
